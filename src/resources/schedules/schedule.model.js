@@ -4,11 +4,11 @@ class Schedule {
     constructor({
         id = uuid(),
         Tourid = null,
-        isActive = true;
-        startDate ='20.01.2020',
-        endDate = '31.12.2020',
-        createdAt = Date('21.05.2020'),
-        updatedAt = Date('30.09.2020')
+        isActive = true,
+        startDate =new Date('20.01.2020'),
+        endDate = new Date ('31.12.2020'),
+        createdAt =  new Date('21.05.2020'),
+        updatedAt = new Date('30.09.2020')
 
     }={})
     {

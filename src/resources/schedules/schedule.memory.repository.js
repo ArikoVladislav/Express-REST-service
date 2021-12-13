@@ -60,11 +60,11 @@ const updateById = async (id) =>({
     return newSchedule;
 }
 const deleteById = async (id) => {
-    const schedulePos = scheduleList.findIndex((schedule) => schedule.id === id);
+    const schedulePos = Schedules.findIndex((schedule) => schedule.id === id);
 
     if (schedulePos === -1) return null;
 
-    const scheduleDeletable = scheduleList[schedulePos];
+    const scheduleDeletable = Schedules[schedulePos];
 
     scheduleList.splice(schedulePos, 1);
     return scheduleDeletable;
@@ -80,7 +80,7 @@ const deleteByTourId = async (tourId) => {
 }
 
 module.exports = {
-    schedules,
+    Schedules,
     getAll,
     getById,
     getSchedulesByTourId,

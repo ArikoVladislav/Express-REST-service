@@ -1,6 +1,6 @@
 const Tour = require('./tour.model')
 
-const Tours = [new Tour()];
+const Tours = [new Tour()]
 
 const getAll = async () => Tours;
 
@@ -51,18 +51,18 @@ const createTour = async ({
   
     Tours.splice(tourPos, 1, newTour);
     return newTour;
-  };
-
-    const deleteById = async (id) => {
-    const tourPosition = tours.findIndex((tour) => tour.id === id);
+  })
+  const deleteById = async (id) => {
+    const tourPos = Tours.findIndex((tour) => tour.id === id);
   
-    if (tourPosition === -1) return null;
+    if (tourPos === -1) return null;
   
-    const tourDeletable = tours[tourPosition];
+    const tourDeletable = Tours[tourPos];
   
-    tours.splice(tourPosition, 1);
+    Tours.splice(tourPos, 1);
     return tourDeletable;
   }
+
   module.exports = {
     Tours,
     getAll,
@@ -70,4 +70,4 @@ const createTour = async ({
     createTour,
     updateById,
     deleteById
-  }; 
+  }

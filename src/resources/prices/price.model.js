@@ -14,7 +14,6 @@ class Price {
     {
         this.id = id;
         this.scheduleId = scheduleId;
-        this.isActive = isActive;
         this.priceValue = priceValue;
         this.priceCurrency = priceCurrency;
         this.createdAt = createdAt;
