@@ -7,8 +7,8 @@ class Tour {
     slug = 'user', 
     description = 'a beautiful place' , 
     isActive=true , 
-    createdAt =  Date('21.05.2020') , 
-    updatedAt =  Date('30.09.2020') 
+    createdAt =  new Date('21.05.2020') , 
+    updatedAt =  new Date('30.09.2020') 
   } = {}) {
     this.id = id;
     this.title = title;
