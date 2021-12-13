@@ -5,12 +5,12 @@ const router = require('express').Router();
 const Price = require('../prices/price.model');
 const Schedule = require('./schedule.model');
 
-const scedulesService = require('./schedule.service');
+const schedulesService = require('./schedule.service');
 const catchErrors = require('../../common/catchErrors');
 
 router.route('/').get(
     catchErrors(async (req, res) => {
-        const schedules = await schedulessService.getAll();
+        const schedules = await schedulesService.getAll();
 
         res.json(schedules.map(Schedule.toResponse));
     })

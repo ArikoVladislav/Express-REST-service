@@ -8,7 +8,7 @@ const getAll = async () => Schedules;
 const getById = async (id) => Schedules.find((schedule) => schedule.id === id);
 
 const getSchedulesByTourId = async (tourId) => {
-    const schedules = schedules.filter((schedule) => schedule.tourId === tourId);
+    const schedules = Schedules.filter((schedule) => schedule.tourId === tourId);
     return schedules;
 }
 
@@ -20,7 +20,7 @@ const createSchedule = async ({
     createdAt,
     updatedAt
 }) => {
-    const Schedule = new Schedule({
+    const schedule = new Schedule({
         TourId,
         isActive,
         startDate,
@@ -66,7 +66,7 @@ const deleteById = async (id) => {
 
     const scheduleDeletable = Schedules[schedulePos];
 
-    scheduleList.splice(schedulePos, 1);
+    Schedules.splice(schedulePos, 1);
     return scheduleDeletable;
 }
 
@@ -75,12 +75,12 @@ const deleteByTourId = async (tourId) => {
 
     await Promise.allSettled(schedules.map(async (schedule) => {
         deleteById(schedule.id);
-        priceRepo.deleteByScheduleId(schedule.id);
+        pricesRepo.deleteByScheduleId(schedule.id);
     }))
 }
 
 module.exports = {
-    Schedules,
+    Schedules:Schedules,
     getAll,
     getById,
     getSchedulesByTourId,

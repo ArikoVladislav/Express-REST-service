@@ -34,7 +34,7 @@ const createTour = async ({
     createdAt,
     updatedAt
   }) => {
-    const tourPos = Tours.findIndex((tours) => tour.id === id);
+    const tourPos = Tours.findIndex((tour) => tour.id === id);
     if (tourPos === -1) return null;
   
     const oldTour = Tours[tourPos];
@@ -59,7 +59,7 @@ const createTour = async ({
   
     const tourDeletable = Tours[tourPos];
   
-    Tours.splice(tourPos, 1);
+    this.Tours.splice(tourPos, 1);
     return tourDeletable;
   }
 

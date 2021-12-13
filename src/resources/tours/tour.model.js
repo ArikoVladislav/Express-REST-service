@@ -19,9 +19,9 @@ class Tour {
     this.updatedAt = updatedAt;
   }
 
-  static toResponse(user) {
-    const { id, title, slug, description, createdAt } = tour;
-    return { id, title, slug, description, createdAt };
+  static toResponse(tour) {
+    const { id, title, slug, description, isActive, createdAt, updatedAt } = tour;
+    return { id, title, slug, isActive, description, createdAt, updatedAt };
   }
 }
 
