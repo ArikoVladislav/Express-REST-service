@@ -26,7 +26,6 @@ const createSchedule = ({
 });
 
 const updateById = async (id) => ({
-    consumerId,
     Tourid,
     isActive,
     startDate,
