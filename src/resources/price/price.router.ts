@@ -17,7 +17,7 @@ router.route('/').get(
     })
 );
 
-router.route(':/:id').get(
+router.route('/:id').get(
     catchErrors(async (req: Request, res: Response) => {
         const {
             id
@@ -31,8 +31,8 @@ router.route(':/:id').get(
             res
                 .status(StatusCodes.NOT_FOUND)
                 .json({
-                    code: 'PRICE_NOT_FOUND',
-                    msg: 'Price not found'
+                    code: 'PRODUCT_NOT_FOUND',
+                    msg: 'Product not found'
                 });
         }
     })
@@ -62,13 +62,13 @@ router.route('/').post(
                 .status(StatusCodes.BAD_REQUEST)
                 .json({
                     code: 'PRICE_NOT_CREATED',
-                    msg: 'Price not created'
+                    msg: 'PRICE not created'
                 });
         }
     })
 );
 
-router.route(':/:id').put(
+router.route('/:id').put(
     catchErrors(async (req: Request, res: Response) => {
         const {
             id
@@ -97,7 +97,7 @@ router.route(':/:id').put(
                 .status(StatusCodes.NOT_FOUND)
                 .json({
                     code: 'PRICE_NOT_FOUND',
-                    msg: 'Price not found'
+                    msg: 'PRICE not found'
                 });
         }
     })
@@ -116,7 +116,7 @@ router.route('/:id').delete(
                 .status(StatusCodes.NOT_FOUND)
                 .json({
                     code: 'PRICE_NOT_FOUND',
-                    msg: 'Price not found'
+                    msg: 'PRICE not found'
                 });
         }
 
@@ -129,4 +129,4 @@ router.route('/:id').delete(
     })
 );
 
-export default  router;
+export default router;

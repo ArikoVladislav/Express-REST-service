@@ -1,17 +1,16 @@
 import { IPrice, IBasePrice } from './price.interface';
 import Price from './price.model';
 
-const Prices: IPrice[] = []
+const PRICES: IPrice[] = []
 
-const getAll = async (): Promise<IPrice[]> => Prices;
+const getAll = async (): Promise<IPrice[]> => PRICES;
 
-const getById = async (id: string): Promise<IPrice | null> => Prices.find((price) => price.id === id)|| null;;
+const getById = async (id: string): Promise<IPrice | null> => PRICES.find((price) => price.id === id) || null;
 
-const getPriceIdByScheduleId = async (scheduleId: string): Promise<IPrice[] | null>  => {
-    const prices = Prices.filter((price) => price.scheduleId === scheduleId);
+const getPricesByScheduleId = async (scheduleId: string): Promise<IPrice[] | null> => {
+    const prices = PRICES.filter((price) => price.scheduleId === scheduleId);
     return prices;
 }
-
 
 const createPrice = async ({
     scheduleId,
@@ -27,11 +26,11 @@ const createPrice = async ({
     createdAt,
     updatedAt
     })
-    Prices.push(price);
+    PRICES.push(price);
     return price;
 }
 
-const updateById = async  ({
+const updateById = async ({
     id,
     scheduleId,
     priceValue,
@@ -39,11 +38,11 @@ const updateById = async  ({
     createdAt,
     updatedAt
 }: IPrice): Promise<IPrice | null> => {
-    const pricePos = Prices.findIndex((price) => price.id === id);
+    const pricePos = PRICES.findIndex((price) => price.id === id);
 
     if (pricePos === -1) return null;
 
-    const oldPrice = Prices[pricePos]
+    const oldPrice = PRICES[pricePos];
 
     const newPrice = {
         ...oldPrice,
@@ -51,36 +50,37 @@ const updateById = async  ({
         priceValue,
         priceCurrency,
         createdAt,
-        updatedAt
+        updatedAt,
+        id
     };
 
-    Prices.splice(pricePos, 1, newPrice);
+    PRICES.splice(pricePos, 1, newPrice);
     return newPrice;
 
 };
+
 const deleteById = async (id: string): Promise<IPrice | null> => {
-    const pricePos = Prices.findIndex((price) => price.id === id);
+    const pricePos = PRICES.findIndex((price) => price.id === id);
 
     if (pricePos === -1) return null;
 
-    const priceDeletable = Prices[pricePos];
+    const priceDeletable = PRICES[pricePos]!;
 
-    Prices.splice(pricePos, 1);
+    PRICES.splice(pricePos, 1);
     return priceDeletable;
 }
 
 const deleteByScheduleId = async (scheduleId: string): Promise<void> => {
-    const schedules = Prices.filter((price) => price.scheduleId === scheduleId);
+    const schedules = PRICES.filter((price) => price.scheduleId === scheduleId);
 
-    await Promise.allSettled(schedules.map(async (price) => deleteById(price.id)))
+    await Promise.allSettled(schedules.map(async (price) => deleteById(price.id)));
 }
 
-
 export default {
-    Prices,
+    PRICES,
     getAll,
     getById,
-    getPriceIdByScheduleId,
+    getPricesByScheduleId,
     createPrice,
     updateById,
     deleteById,

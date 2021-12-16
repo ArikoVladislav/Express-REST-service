@@ -2,7 +2,7 @@ import { Request, Response, Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 
-import Price from '../prices/price.model';
+import Price from '../price/price.model';
 import Schedule from './schedule.model';
 
 import schedulesService from './schedule.service';
@@ -18,22 +18,22 @@ router.route('/').get(
     })
 );
 
-router.route(':/:id').get(
+router.route('/:id').get(
     catchErrors(async (req: Request, res: Response) => {
         const {
             id
         } = req.params;
 
-        const schedules = await schedulesService.getById(id);
+        const schedule = await schedulesService.getById(id || '');
 
-        if (schedules) {
-            res.json(Schedule.toResponse(schedules));
+        if (schedule) {
+            res.json(Schedule.toResponse(schedule));
         } else {
             res
                 .status(StatusCodes.NOT_FOUND)
                 .json({
-                    code: 'SCHEDULE_NOT_FOUND',
-                    msg: 'Schedule not found'
+                    code: 'ORDER_NOT_FOUND',
+                    msg: 'Order not found'
                 });
         }
     })
@@ -45,7 +45,7 @@ router.route('/:id/prices').get(
             id
         } = req.params;
 
-        const schedules = await schedulesService.getPricesByScheduleId(id);
+        const schedules = await schedulesService.getPricesByScheduleId(id || '');
 
         if (schedules) {
             res.json(schedules.map((ord) => Price.toResponse(ord)));
@@ -54,7 +54,7 @@ router.route('/:id/prices').get(
                 .status(StatusCodes.NOT_FOUND)
                 .json({
                     code: 'PRICES_NOT_FOUND',
-                    msg: 'Prices not found'
+                    msg: 'PRICES not found'
                 });
         }
     })
@@ -87,13 +87,13 @@ router.route('/').post(
                 .status(StatusCodes.BAD_REQUEST)
                 .json({
                     code: 'SCHEDULE_NOT_CREATED',
-                    msg: 'Schedule not created'
+                    msg: 'SCHEDULE not created'
                 });
         }
     })
 );
 
-router.route(':/:id').put(
+router.route('/:id').put(
     catchErrors(async (req: Request, res: Response) => {
         const {
             id
@@ -123,8 +123,8 @@ router.route(':/:id').put(
             res
                 .status(StatusCodes.NOT_FOUND)
                 .json({
-                    code: 'SCHEDULES_NOT_FOUND',
-                    msg: 'Schedule not found'
+                    code: 'SCHEDULE_NOT_FOUND',
+                    msg: 'SCHEDULE not found'
                 });
         }
     })
@@ -143,7 +143,7 @@ router.route('/:id').delete(
                 .status(StatusCodes.NOT_FOUND)
                 .json({
                     code: 'SCHEDULE_NOT_FOUND',
-                    msg: 'Schedule not found'
+                    msg: 'SCHEDULE not found'
                 });
         }
 
@@ -151,7 +151,7 @@ router.route('/:id').delete(
             .status(StatusCodes.NO_CONTENT)
             .json({
                 code: 'SCHEDULE_DELETED',
-                msg: 'The Schedule has been deleted'
+                msg: 'The SCHEDULE has been deleted'
             });
     })
 );

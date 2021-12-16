@@ -1,6 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
 
-const catchErrors = (fn:Function) => async (req: Request, res: Response, next: NextFunction,):Promise<Function | void> => {
+const catchErrors = (fn: Function) => async (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+): Promise<Function | void> => {
     try {
         return fn(req, res, next);
     } catch (error) {
@@ -8,4 +12,4 @@ const catchErrors = (fn:Function) => async (req: Request, res: Response, next: N
     }
 };
 
-export default catchErrors; 
+export default catchErrors;

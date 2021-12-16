@@ -1,13 +1,20 @@
-import {v4 as uuid} from 'uuid';
+import {
+    v4 as uuid
+} from 'uuid';
 
 import { IBasePricePartial, IPrice } from './price.interface';
 
 class Price {
     id: string;
+
     scheduleId: string | null;
+
     priceValue: string;
+
     priceCurrency: string;
+
     createdAt: Date;
+
     updatedAt: Date;
 
     constructor({
@@ -16,8 +23,7 @@ class Price {
         priceCurrency = '$',
         createdAt = new Date,
         updatedAt = new Date
-    }: IBasePricePartial ={})
-    {
+    }: IBasePricePartial = {}) {
         this.id = uuid();
         this.scheduleId = scheduleId;
         this.priceValue = priceValue;
@@ -26,8 +32,8 @@ class Price {
         this.updatedAt = updatedAt;
     }
 
-    static toResponse(price: IPrice): IPrice{
-        const{
+    static toResponse(price: IPrice): IPrice {
+        const {
             id,
             scheduleId,
             priceValue,
@@ -35,7 +41,7 @@ class Price {
             createdAt,
             updatedAt
         } = price;
-        return{
+        return {
             id,
             scheduleId,
             priceValue,
@@ -46,4 +52,5 @@ class Price {
         };
     }
 }
+
 export default Price;

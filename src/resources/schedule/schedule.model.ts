@@ -1,14 +1,22 @@
-import {v4 as uuid} from 'uuid';
+import {
+    v4 as uuid
+} from 'uuid';
 
 import { ISchedule, IBaseSchedulePartial, IBaseScheduleResponse } from './schedule.interface';
 
 class Schedule {
     id:string;
+
     tourId: string | null;
+
     isActive: Boolean;
+
     startDate: Date;
+
     endDate: Date;
+
     createdAt: Date;
+
     updatedAt: Date;
 
     constructor({
@@ -18,9 +26,7 @@ class Schedule {
         endDate = new Date,
         createdAt =  new Date,
         updatedAt = new Date
-
-    }: IBaseSchedulePartial={})
-    {
+    }: IBaseSchedulePartial = {}) {
         this.id = uuid();
         this.tourId = tourId;
         this.isActive = isActive;
@@ -30,8 +36,8 @@ class Schedule {
         this.updatedAt =updatedAt;
     }
 
-    static toResponse(schedule: ISchedule): ISchedule{
-        const{
+    static toResponse(schedule: ISchedule): IBaseScheduleResponse {
+        const {
             id,
             tourId,
             isActive,
@@ -40,7 +46,7 @@ class Schedule {
             createdAt,
             updatedAt
         } = schedule;
-        return{
+        return {
             id,
             tourId,
             isActive,
@@ -48,8 +54,8 @@ class Schedule {
             endDate,
             createdAt,
             updatedAt
-
         };
     }
 }
+
 export default Schedule;

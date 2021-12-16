@@ -1,13 +1,24 @@
-import {v4 as uuid} from 'uuid';
-import { ITour, IBaseTourPartial, IBaseTourResponse } from './tour.interface';
+import {
+  v4 as uuid
+} from 'uuid';
+
+import { ITour, IBaseTourPartial, IBaseTourResponse} from './tour.interface';
+
 class Tour {
     id: string;
-    title: string; 
+
+    title: string;
+ 
     slug: string;
+
     description: string;
+
     isActive: boolean;
-    createdAt: Date; 
-    updatedAt: Date; 
+
+    createdAt: Date;
+ 
+    updatedAt: Date;
+ 
   constructor({
     slug = 'test',
     title = 'title',
@@ -25,9 +36,13 @@ class Tour {
     this.updatedAt = updatedAt;
   }
 
-  static toResponse(tour:ITour):IBaseTourResponse {
-    const { id, title, slug, description, isActive, createdAt, updatedAt } = tour;
-    return { id, title, slug, isActive, description, createdAt, updatedAt };
+  static toResponse(tour: ITour): IBaseTourResponse {
+    const {
+      id, title, slug, description, isActive, createdAt, updatedAt
+    } = tour;
+    return {
+      id, title, slug, description, isActive, createdAt, updatedAt
+    };
   }
 }
 

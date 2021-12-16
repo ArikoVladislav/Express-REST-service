@@ -1,14 +1,15 @@
-import express  from 'express';
+import express from 'express';
 
 import swaggerUI from 'swagger-ui-express';
 import path from 'path';
 import YAML from 'yamljs';
 
-import tourRouter from "./resources/tours/tour.router";
-import scheduleRouter from "./resources/schedules/schedule.router";
-import priceRouter from "./resources/prices/price.router";
+import tourRouter from "./resources/tour/tour.router";
+import scheduleRouter from "./resources/schedule/schedule.router";
+import priceRouter from "./resources/price/price.router";
 
 const app = express();
+
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
 app.use(express.json());
@@ -23,9 +24,9 @@ app.use('/', (req, res, next) => {
   next();
 });
 
-app.use('/tours', tourRouter);
-app.use('/schedules', scheduleRouter);
-app.use('/prices', priceRouter);
+app.use('/tour', tourRouter);
+app.use('/schedule', scheduleRouter);
+app.use('/price', priceRouter);
 
 export default app;
 

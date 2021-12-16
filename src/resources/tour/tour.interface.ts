@@ -15,4 +15,4 @@ export interface ITour extends IBaseTour {
 
 export interface IBaseTourResponse extends Partial<IBaseTour> {
     id: string;
-} 
+}
