@@ -1,10 +1,11 @@
-const Tour = require('./tour.model')
+import { IBaseTour, ITour } from './tour.interface';
+import Tour from './tour.model';
 
-const Tours = [new Tour()]
+const Tours: ITour[] = [];
 
-const getAll = async () => Tours;
+const getAll = async (): Promise<ITour[]> => Tours;
 
-const getById = async (id) => Tours.find((tour) => tour.id === id);
+const getById = async (id:string): Promise<ITour | null>   => Tours.find((tour) => tour.id === id) || null
 
 const createTour = async ({
     title,
@@ -13,7 +14,7 @@ const createTour = async ({
     isActive,
     createdAt,
     updatedAt
-  }) => {
+  }: IBaseTour): Promise<ITour> => {
     const tour = new Tour({
       title,
       slug,
@@ -26,14 +27,15 @@ const createTour = async ({
     return tour;
   }
 
-  const updateById = async (id) => (({
+  const updateById = async ({
+    id,
     title,
     slug,
     description,
     isActive,
     createdAt,
     updatedAt
-  }) => {
+  }:ITour): Promise<ITour | null> => {
     const tourPos = Tours.findIndex((tour) => tour.id === id);
     if (tourPos === -1) return null;
   
@@ -51,19 +53,19 @@ const createTour = async ({
   
     Tours.splice(tourPos, 1, newTour);
     return newTour;
-  })
-  const deleteById = async (id) => {
+  };
+  const deleteById = async (id:string):Promise<ITour | null> => {
     const tourPos = Tours.findIndex((tour) => tour.id === id);
   
     if (tourPos === -1) return null;
   
     const tourDeletable = Tours[tourPos];
   
-    this.Tours.splice(tourPos, 1);
+    Tours.splice(tourPos, 1);
     return tourDeletable;
   }
 
-  module.exports = {
+ export default  {
     Tours,
     getAll,
     getById,

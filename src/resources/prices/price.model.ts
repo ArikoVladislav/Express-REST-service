@@ -1,18 +1,24 @@
-const {v4:uuid} = require('uuid');
+import {v4 as uuid} from 'uuid';
+
+import { IBasePricePartial, IPrice } from './price.interface';
 
 class Price {
+    id: string;
+    scheduleId: string | null;
+    priceValue: string;
+    priceCurrency: string;
+    createdAt: Date;
+    updatedAt: Date;
+
     constructor({
-        id = uuid(),
         scheduleId = null,
         priceValue = '565',
         priceCurrency = '$',
-        createdAt = Date('21.05.2020'),
-        updatedAt = Date('30.09.2020')
-
-
-    }={})
+        createdAt = new Date,
+        updatedAt = new Date
+    }: IBasePricePartial ={})
     {
-        this.id = id;
+        this.id = uuid();
         this.scheduleId = scheduleId;
         this.priceValue = priceValue;
         this.priceCurrency = priceCurrency;
@@ -20,7 +26,7 @@ class Price {
         this.updatedAt = updatedAt;
     }
 
-    static toResponse(price){
+    static toResponse(price: IPrice): IPrice{
         const{
             id,
             scheduleId,
@@ -40,4 +46,4 @@ class Price {
         };
     }
 }
-module.exports = Price;
+export default Price;

@@ -1,27 +1,28 @@
-const Schedule = require('./schedule.model')
-const priceRepo = require('../prices/price.memory.repository');
+import { IBaseSchedule, ISchedule } from './schedule.interface';
+import Schedule from './schedule.model';
+import pricesRepo from '../prices/price.memory.repository';
 
-const Schedules = [new Schedule()];
+const Schedules:ISchedule[] = [];
 
-const getAll = async () => Schedules;
+const getAll = async (): Promise<ISchedule[]> => Schedules;
 
-const getById = async (id) => Schedules.find((schedule) => schedule.id === id);
+const getById = async (id: string): Promise<ISchedule | null> => Schedules.find((schedule) => schedule.id === id) || null;;
 
-const getSchedulesByTourId = async (tourId) => {
+const getSchedulesByTourId = async (tourId: string): Promise<ISchedule[]| null> => {
     const schedules = Schedules.filter((schedule) => schedule.tourId === tourId);
     return schedules;
 }
 
 const createSchedule = async ({
-    TourId,
+    tourId,
     isActive,
     startDate,
     endDate,
     createdAt,
     updatedAt
-}) => {
+}: IBaseSchedule): Promise<ISchedule> => {
     const schedule = new Schedule({
-        TourId,
+        tourId,
         isActive,
         startDate,
         endDate,
@@ -32,23 +33,25 @@ const createSchedule = async ({
     return schedule;
 }
 
-const updateById = async (id) =>({
-    TourId,
+const updateById = async ({
+    id,
+    tourId,
     isActive,
     startDate,
     endDate,
     createdAt,
     updatedAt
-}) => {
-    const schedulePos = scheduleList.findIndex((order) => schedule.id === id);
+}: ISchedule): Promise<ISchedule | null> => {
+    const schedulePos = Schedules.findIndex((schedule) => schedule.id === id);
 
     if (schedulePos === -1) return null;
 
-    const oldschedule = Schedules[schedulePos];
+    const oldSchedule = Schedules[schedulePos];
 
     const newSchedule = {
         ...oldSchedule,
-        TourId,
+        id,
+        tourId,
         isActive,
         startDate,
         endDate,
@@ -59,7 +62,7 @@ const updateById = async (id) =>({
     Schedules.splice(schedulePos, 1, newSchedule);
     return newSchedule;
 }
-const deleteById = async (id) => {
+const deleteById = async (id: string): Promise<ISchedule| null>  => {
     const schedulePos = Schedules.findIndex((schedule) => schedule.id === id);
 
     if (schedulePos === -1) return null;
@@ -70,8 +73,8 @@ const deleteById = async (id) => {
     return scheduleDeletable;
 }
 
-const deleteByTourId = async (tourId) => {
-    const schedule = Schedules.filter((schedule) => schedule.tourId === tourId);
+const deleteByTourId = async (tourId: string): Promise<void> => {
+    const schedules = Schedules.filter((schedule) => schedule.tourId === tourId);
 
     await Promise.allSettled(schedules.map(async (schedule) => {
         deleteById(schedule.id);
@@ -79,7 +82,7 @@ const deleteByTourId = async (tourId) => {
     }))
 }
 
-module.exports = {
+export default  {
     Schedules:Schedules,
     getAll,
     getById,
@@ -87,7 +90,6 @@ module.exports = {
     createSchedule,
     deleteById,
     updateById,
-    deleteById,
     deleteByTourId
 
 } 
