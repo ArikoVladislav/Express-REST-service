@@ -8,6 +8,8 @@ import tourRouter from "./resources/tour/tour.router";
 import scheduleRouter from "./resources/schedule/schedule.router";
 import priceRouter from "./resources/price/price.router";
 
+import { logging, errorHandling } from './middlewares';
+
 const app = express();
 
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
@@ -24,9 +26,13 @@ app.use('/', (req, res, next) => {
   next();
 });
 
+app.use(logging);
+
 app.use('/tour', tourRouter);
 app.use('/schedule', scheduleRouter);
 app.use('/price', priceRouter);
+
+app.use(errorHandling);
 
 export default app;
 

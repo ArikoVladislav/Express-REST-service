@@ -2,7 +2,7 @@ import { IBaseTour, ITour } from './tour.interface';
 
 import Tour from './tour.model';
 
-const TOURS: ITour[] = [];
+const TOURS: ITour[] = [new Tour()];
 
 const getAll = async (): Promise<ITour[]> => TOURS;
 

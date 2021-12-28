@@ -1,7 +1,7 @@
 import { IPrice, IBasePrice } from './price.interface';
 import Price from './price.model';
 
-const PRICES: IPrice[] = []
+const PRICES: IPrice[] = [new Price()]
 
 const getAll = async (): Promise<IPrice[]> => PRICES;
 

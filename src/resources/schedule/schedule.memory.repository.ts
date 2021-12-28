@@ -3,7 +3,7 @@ import Schedule from './schedule.model';
 import pricesRepo from '../price/price.memory.repository';
 
 
-const SCHEDULES: ISchedule[] = [];
+const SCHEDULES: ISchedule[] = [new Schedule()];
 
 const getAll = async (): Promise<ISchedule[]> => SCHEDULES;
 

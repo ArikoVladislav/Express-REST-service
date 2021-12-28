@@ -1,7 +1,7 @@
 import { Request, Response, Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-
+import asyncHandler from 'express-async-handler';
 import Tour from './tour.model';
 import Schedule from '../schedule/schedule.model';
 
@@ -11,7 +11,7 @@ import catchErrors from '../../common/catchErrors';
 const router = Router();
 
 router.route('/').get(
-  catchErrors(async (_req: Request, res: Response) => {
+  asyncHandler(async (_req: Request, res: Response) => {
     const tours = await toursService.getAll();
 
     res.json(tours.map(Tour.toResponse));
@@ -19,7 +19,7 @@ router.route('/').get(
 );
 
 router.route('/:id').get(
-  catchErrors(async (req: Request, res: Response) => {
+  asyncHandler(async (req: Request, res: Response) => {
     const {
       id
     } = req.params;
@@ -36,11 +36,12 @@ router.route('/:id').get(
           msg: 'Tour not found'
         });
     }
+    throw new Error("error");
   })
 );
 
 router.route('/:id/schedules').get(
-  catchErrors(async (req: Request, res: Response) => {
+  asyncHandler(async (req: Request, res: Response) => {
     const {
       id
     } = req.params;
@@ -61,7 +62,7 @@ router.route('/:id/schedules').get(
 );
 
 router.route('/').post(
-  catchErrors(async (req: Request, res: Response) => {
+  asyncHandler(async (req: Request, res: Response) => {
     const {
         title,
         slug,
@@ -94,7 +95,7 @@ router.route('/').post(
 );
 
 router.route('/:id').put(
-  catchErrors(async (req: Request, res: Response) => {
+  asyncHandler(async (req: Request, res: Response) => {
     const {
       id
     } = req.params;

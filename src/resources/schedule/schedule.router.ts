@@ -1,7 +1,7 @@
 import { Request, Response, Router } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-
+import asyncHandler from 'express-async-handler';
 import Price from '../price/price.model';
 import Schedule from './schedule.model';
 
@@ -11,7 +11,7 @@ import catchErrors from '../../common/catchErrors';
 const router = Router();
 
 router.route('/').get(
-    catchErrors(async (_req: Request, res: Response) => {
+    asyncHandler(async (_req: Request, res: Response) => {
         const schedules = await schedulesService.getAll();
 
         res.json(schedules.map(Schedule.toResponse));
@@ -19,7 +19,7 @@ router.route('/').get(
 );
 
 router.route('/:id').get(
-    catchErrors(async (req: Request, res: Response) => {
+    asyncHandler(async (req: Request, res: Response) => {
         const {
             id
         } = req.params;
@@ -40,7 +40,7 @@ router.route('/:id').get(
 );
 
 router.route('/:id/prices').get(
-    catchErrors(async (req: Request, res: Response) => {
+    asyncHandler(async (req: Request, res: Response) => {
         const {
             id
         } = req.params;
@@ -61,7 +61,7 @@ router.route('/:id/prices').get(
 );
 
 router.route('/').post(
-    catchErrors(async (req: Request, res: Response) => {
+    asyncHandler(async (req: Request, res: Response) => {
         const {
             tourId,
             isActive,
@@ -94,7 +94,7 @@ router.route('/').post(
 );
 
 router.route('/:id').put(
-    catchErrors(async (req: Request, res: Response) => {
+    asyncHandler(async (req: Request, res: Response) => {
         const {
             id
         } = req.params;
