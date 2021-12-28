@@ -1,0 +1,240 @@
+
+        request Time:     Tue Dec 28 2021 23:48:25 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/?id&title&slug&description&isActive&createdAt&updatedAt
+        body:             {}
+        query:            {
+	"id": "",
+	"title": "",
+	"slug": "",
+	"description": "",
+	"isActive": "",
+	"createdAt": "",
+	"updatedAt": ""
+}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Tue Dec 28 2021 23:49:20 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/?id&title&slug&description&isActive&createdAt&updatedAt
+        body:             {}
+        query:            {
+	"id": "",
+	"title": "",
+	"slug": "",
+	"description": "",
+	"isActive": "",
+	"createdAt": "",
+	"updatedAt": ""
+}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Tue Dec 28 2021 23:51:50 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/?id&title&slug&description&isActive&createdAt&updatedAt
+        body:             {}
+        query:            {
+	"id": "",
+	"title": "",
+	"slug": "",
+	"description": "",
+	"isActive": "",
+	"createdAt": "",
+	"updatedAt": ""
+}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Tue Dec 28 2021 23:53:24 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/?id&title&slug&description&isActive&createdAt&updatedAt
+        body:             {}
+        query:            {
+	"id": "",
+	"title": "",
+	"slug": "",
+	"description": "",
+	"isActive": "",
+	"createdAt": "",
+	"updatedAt": ""
+}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Tue Dec 28 2021 23:59:43 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/?id&title&slug&description&isActive&createdAt&updatedAt
+        body:             [
+	{
+		"id": "",
+		"title": "",
+		"slug": "",
+		"description": "",
+		"isActive": "",
+		"createdAt": "",
+		"updatedAt": ""
+	}
+]
+        query:            {
+	"id": "",
+	"title": "",
+	"slug": "",
+	"description": "",
+	"isActive": "",
+	"createdAt": "",
+	"updatedAt": ""
+}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:01:24 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours
+        body:             {}
+        query:            {}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:01:32 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tour
+        body:             {}
+        query:            {}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:02:09 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/?id&title&slug&description&isActive&createdAt&updatedAt
+        body:             [
+	{
+		"id": "821aa1ea-1996-4390-bce2-0d6aa41a48b9",
+		"title": "title",
+		"slug": "slug",
+		"description": "place",
+		"isActive": true,
+		"createdAt": "2021-12-28T20:51:46.065Z",
+		"updatedAt": "2021-12-28T20:51:46.065Z"
+	}
+]
+        query:            {
+	"id": "",
+	"title": "",
+	"slug": "",
+	"description": "",
+	"isActive": "",
+	"createdAt": "",
+	"updatedAt": ""
+}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:02:18 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/?id&title&slug&description&isActive&createdAt&updatedAt
+        body:             [
+	{
+		"id": "821aa1ea-1996-4390-bce2-0d6aa41a48b9",
+		"title": "title",
+		"slug": "slug",
+		"description": "place",
+		"isActive": true,
+		"createdAt": "2021-12-28T20:51:46.065Z",
+		"updatedAt": "2021-12-28T20:51:46.065Z"
+	}
+]
+        query:            {
+	"id": "",
+	"title": "",
+	"slug": "",
+	"description": "",
+	"isActive": "",
+	"createdAt": "",
+	"updatedAt": ""
+}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:36:13 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/qwe
+        body:             [
+	{
+		"id": "821aa1ea-1996-4390-bce2-0d6aa41a48b9",
+		"title": "title",
+		"slug": "slug",
+		"description": "place",
+		"isActive": true,
+		"createdAt": "2021-12-28T20:51:46.065Z",
+		"updatedAt": "2021-12-28T20:51:46.065Z"
+	}
+]
+        query:            {}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:36:25 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/qwe
+        body:             {}
+        query:            {}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:37:20 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/qwe
+        body:             {}
+        query:            {}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:40:20 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tours/qwe
+        body:             {}
+        query:            {}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:40:31 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tour/qwe
+        body:             {}
+        query:            {}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:49:00 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tour/qwe
+        body:             {}
+        query:            {}
+        params:           {}
+        processing time:  0 ms
+        status code:      200
+
+        request Time:     Wed Dec 29 2021 00:49:18 GMT+0300 (Москва, стандартное время)
+        method:           GET
+        url:              http://localhost:4000/tour/qwe
+        body:             {}
+        query:            {}
+        params:           {}
+        processing time:  0 ms
+        status code:      200

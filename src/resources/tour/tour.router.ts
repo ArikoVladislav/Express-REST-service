@@ -36,7 +36,8 @@ router.route('/:id').get(
           msg: 'Tour not found'
         });
     }
-    throw new Error("error");
+    // throw new Error("error");
+    Promise.reject(Error("Error consumer"));
   })
 );
 
